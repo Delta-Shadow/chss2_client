@@ -7,6 +7,11 @@ declare global {
 		// interface PageData {}
 		// interface Platform {}
 	}
+
+	interface ServerError {
+		code: 'InternalServerError' | 'ValidationError' | 'OpFailed'
+		data: any
+	}
 }
 
-export {};
+export {}

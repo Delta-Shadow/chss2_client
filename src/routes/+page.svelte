@@ -1,1 +1,1 @@
-<h1>Hello World!</h1>
+<h1>Have a game, shall we?</h1>
