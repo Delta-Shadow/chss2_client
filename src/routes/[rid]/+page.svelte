@@ -16,7 +16,8 @@
 
 	onMount(() => {
 		server.connect()
-		const name = prompt('Enter nickname', rand_name())!
+		let name = prompt('Enter nickname')
+		if (name == null) name = rand_name()
 		server.join(name, data.rid, err => {
 			console.log(err)
 		})
