@@ -45,12 +45,12 @@
 <!-- outer container -->
 <div class="flex flex-row items-stretch w-full h-full p-4">
 	<!-- main -->
-	<div class="w-2/3 lg:w-3/4">Main</div>
+	<div class="flex-grow border-4 border-green-800">Main</div>
 
 	<!-- side -->
-	<div class="w-1/3 lg:w-1/4 border-4 border-green-600 p-2 flex flex-col">
+	<div class="w-1/3 lg:w-1/4 border-4 border-green-800 p-2 flex flex-col">
 		<!-- messages area -->
-		<div class="flex-grow">
+		<div class="flex-grow text-green-800">
 			<ul>
 				<li><em>author: </em>content</li>
 				<li><em>author: </em>content</li>
@@ -65,6 +65,6 @@
 		</div>
 
 		<!-- player's list -->
-		<div class="h-8">Player's online: None</div>
+		<div class="h-8 text-red-800">Player's online: None</div>
 	</div>
 </div>

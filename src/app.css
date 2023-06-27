@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@600&display=swap');
+
+* {
+	font-family: 'Martian Mono', monospace;
+	font-weight: 600;
+}
+
 body {
 	margin: 0;
 	width: 100vw;

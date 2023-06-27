@@ -36,7 +36,7 @@
 </script>
 
 <form class="w-full flex-grow relative" on:submit={handle_submit}>
-	<p class="absolute w-full">{display}</p>
+	<p class="absolute w-full text-green-600">{display}</p>
 	<input
 		autofocus
 		type="text"
