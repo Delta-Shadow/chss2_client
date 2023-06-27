@@ -28,6 +28,7 @@
 
 	function handle_submit() {
 		dispatch('submit', { text })
+		text = ''
 	}
 
 	function focus() {
