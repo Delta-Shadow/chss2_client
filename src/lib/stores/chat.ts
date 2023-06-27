@@ -8,10 +8,12 @@ interface Fields {
 	}>
 }
 
-export type Data = Fields | null
+export type Data = Fields
 
 class ChatStore {
-	store = derived(server_store, this.#update, null)
+	store = derived(server_store, this.#update, {
+		msgs: []
+	})
 
 	subscribe = this.store.subscribe
 

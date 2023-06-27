@@ -4,16 +4,18 @@ import server_store, { type Data as ServerData } from './server'
 interface Fields {
 	players: Array<{
 		pid: string
-		rid: string | null
-		name: string | null
-		role: 'white' | 'black' | 'spectator' | null
+		rid: string
+		name: string
+		role: 'white' | 'black' | 'spectator'
 	}>
 }
 
-export type Data = Fields | null
+export type Data = Fields
 
 class SocialStore {
-	store = derived(server_store, this.#update, null)
+	store = derived(server_store, this.#update, {
+		players: []
+	})
 
 	subscribe = this.store.subscribe
 
