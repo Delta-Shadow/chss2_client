@@ -40,14 +40,14 @@
 		</ul>
 
 		<!-- input line -->
-		<div class="flex flex-row gap-2">
+		<div class="flex flex-row gap-2 items-start">
 			<span class="text-green-600">{name}: </span>
 			<Textbox on:submit={send_msg} />
 		</div>
 	</div>
 
 	<!-- player's list -->
-	<div class="h-8 text-red-800">
+	<div class="text-red-800">
 		Player's online:
 		{#each $social.players as p}
 			{p.name + '; '}
