@@ -29,7 +29,7 @@
 <!-- outer container -->
 <div class="w-1/3 lg:w-1/4 border-4 border-green-800 p-2 flex flex-col">
 	<!-- messages area -->
-	<div class="flex-grow text-green-800">
+	<div class="flex-grow text-green-800 overflow-y-auto">
 		<ul>
 			{#each $chat.msgs as c}
 				<li transition:fade>
@@ -41,7 +41,7 @@
 
 		<!-- input line -->
 		<div class="flex flex-row gap-2 items-start">
-			<span class="text-green-600">{name}: </span>
+			<span class="text-green-600 flex-shrink-0">{name}: </span>
 			<Textbox on:submit={send_msg} />
 		</div>
 	</div>
