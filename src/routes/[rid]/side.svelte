@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { fade } from 'svelte/transition'
+
 	// Components
 	import Textbox from './textbox.svelte'
 
@@ -30,7 +32,7 @@
 	<div class="flex-grow text-green-800">
 		<ul>
 			{#each $chat.msgs as c}
-				<li>
+				<li transition:fade>
 					<em>{c.sender}: </em>
 					{c.content}
 				</li>

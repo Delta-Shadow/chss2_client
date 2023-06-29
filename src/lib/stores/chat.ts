@@ -1,5 +1,5 @@
-import { derived } from 'svelte/store'
-import server_store, { type Data as ServerData } from './server'
+import { writable, type Writable } from 'svelte/store'
+import server_store from './server'
 
 interface Fields {
 	msgs: Array<{
@@ -11,16 +11,37 @@ interface Fields {
 export type Data = Fields
 
 class ChatStore {
-	store = derived(server_store, this.#update, {
-		msgs: []
-	})
+	#store: Writable<Data>
+	subscribe: any
 
-	subscribe = this.store.subscribe
+	constructor() {
+		this.#store = writable({ msgs: [] })
 
-	#update(server: ServerData, set: (value: Data) => void) {
-		if (server == null) return
-		const event_name = 'chat_update'
-		server.socket.on(event_name, (data: Fields) => set(data))
+		server_store.subscribe(server => {
+			this.subscribe = this.#store.subscribe
+			if (server != null) {
+				const event_name = 'chat_update'
+				server.socket.on(event_name, this.#server_callback.bind(this))
+			}
+		})
+	}
+
+	#server_callback(data: Data) {
+		this.#store.update((old_data: Data) => ({
+			msgs: [...old_data.msgs, data.msgs[data.msgs.length - 1]]
+		}))
+	}
+
+	sys_msg(msg: string) {
+		this.#store.update((old_data: Data) => ({
+			msgs: [
+				...old_data.msgs,
+				{
+					sender: 'CHSS',
+					content: msg
+				}
+			]
+		}))
 	}
 }
 
